@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='UTF-8'>
+<title>CSS3模拟Chrome浏览器</title>
+<link rel="stylesheet" href="../assets/demo.css">
+<style>
+
+/* 标签样式 */
+.tabs {
+	position: relative;
+	list-style: none;
+	margin: 0;
+	padding: 15px 16px 0;
+	line-height: 24px;
+	overflow: hidden;
+	font-size: 12px;
+}
+
+.tabs:after {
+    position: absolute;
+    content: "";
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    border-bottom: 1px solid #4e75b0;
+    z-index: 1;
+}
+
+.tabs li {
+	display: inline-block;
+	position: relative;
+	cursor: default;
+	min-width: 150px;
+	height:24px;
+	margin: 0 7px;
+	padding: 0 6px;
+	border-width: 1px 0px;
+	border-style: solid;
+	border-color: #3b5c95 transparent #6b86a7;
+	background-color: #bad7f9;
+	background: -o-linear-gradient(top, #bad7f9 5%, #a1c7f5 100%);
+	background: -ms-linear-gradient(top, #bad7f9 5%, #a1c7f5 100%);
+	background: -moz-linear-gradient(top, #bad7f9 5%, #a1c7f5 100%);
+	background: -webkit-linear-gradient(top, #bad7f9 5%, #a1c7f5 100%);
+	background: linear-gradient(top, #bad7f9 5%, #a1c7f5 100%);
+	text-align: left;
+	color: #404040;
+	z-index: 0;
+}
+
+.tabs li:hover {
+	background: -o-radial-gradient(circle,#dbe9f9 0,#bcd7f6 60%);
+	background: -ms-radial-gradient(circle,#dbe9f9 0,#bcd7f6 60%);	
+	background: -moz-radial-gradient(circle,#dbe9f9 0,#bcd7f6 60%);
+	background: -webkit-radial-gradient(circle,#dbe9f9 0,#bcd7f6 60%);
+	background: radial-gradient(circle,#dbe9f9 0,#bcd7f6 60%);
+}
+
+.tabs li:hover:before,
+.tabs li:hover:after{
+	background: #bcd7f6;
+}
+
+.tabs li.selected {
+	background-color: #FFFFFF;
+	background: -o-linear-gradient(top, #FFFFFF 50%, #F8F8F8 100%);
+	background: -ms-linear-gradient(top, #FFFFFF 50%, #F8F8F8 100%);
+	background: -moz-linear-gradient(top, #FFFFFF 50%, #F8F8F8 100%);
+	background: -webkit-linear-gradient(top, #FFFFFF 50%, #F8F8F8 100%);
+	background: linear-gradient(top, #FFFFFF 50%, #F8F8F8 100%);
+	border-bottom-color: #F8F8F8;
+	color: #000;
+	z-index: 2;
+}
+
+.tabs li:before,
+.tabs li:after {
+	position: absolute;
+	bottom: -1px;
+	width: 16px;
+	height: 24px;
+	content: " ";
+	border: 1px solid #3b5c95;
+	border-bottom-color: #6b86a7;
+	background: -o-linear-gradient(top, #bad7f9 5%, #a1c7f5 100%);
+	background: -ms-linear-gradient(top, #bad7f9 5%, #a1c7f5 100%);
+	background: -moz-linear-gradient(top, #bad7f9 5%, #a1c7f5 100%);
+	background: -webkit-linear-gradient(top, #bad7f9 5%, #a1c7f5 100%);
+	background: linear-gradient(top, #bad7f9 5%, #a1c7f5 100%);
+	z-index: 3;
+}
+
+.tabs li:before {
+	left: -12px;
+	border-right: none;
+	border-top-left-radius: 6px;
+	-o-transform: skew(-22deg);
+	-ms-transform: skew(-22deg);
+	-moz-transform: skew(-22deg);
+	-webkit-transform: skew(-22deg);
+	transform: skew(-22deg);
+}
+
+.tabs li:after {
+	right: -12px;
+	border-left: none;
+	border-top-right-radius: 6px;
+	-o-transform: skew(22deg);
+	-ms-transform: skew(22deg);
+	-moz-transform: skew(22deg);
+	-webkit-transform: skew(22deg);
+	transform: skew(22deg);
+}
+
+.tabs li.selected:before,
+.tabs li.selected:after {
+	background-color: #FFFFFF;
+	background: -o-linear-gradient(top, #FFFFFF 50%, #F8F8F8 100%);
+	background: -ms-linear-gradient(top, #FFFFFF 50%, #F8F8F8 100%);
+	background: -moz-linear-gradient(top, #FFFFFF 50%, #F8F8F8 100%);
+	background: -webkit-linear-gradient(top, #FFFFFF 50%, #F8F8F8 100%);
+	background: linear-gradient(top, #FFFFFF 50%, #F8F8F8 100%);
+	border-bottom-color: #F8F8F8;
+}
+
+
+
+/* 浏览器窗体样式 */
+.browser{
+	padding: 0 3px 3px;
+	border: 1px solid #595959;
+	border-radius: 5px;
+	background-color: #4271c9;
+	background: -o-linear-gradient(top, #6193dd 0, #3b65b5 40px);
+	background: -ms-linear-gradient(top, #6193dd 0, #3b65b5 40px);
+	background: -moz-linear-gradient(top, #6193dd 0, #3b65b5 40px);
+	background: -webkit-linear-gradient(top, #6193dd 0, #3b65b5 40px);
+	background: linear-gradient(top, #6193dd 0, #3b65b5 40px);
+	-moz-box-shadow: 0 0 3px rgba(255,255,255,0.7) inset;
+	-webkit-box-shadow: 0 0 3px rgba(255,255,255,0.7) inset;
+	box-shadow: 0 0 3px rgba(255,255,255,0.7) inset;
+}
+
+.tollbar{
+	height: 27px;
+	padding: 4px 0;
+	border-bottom: 1px solid #b6bac0;
+	border-radius: 2px 2px 0 0;
+	background-color: #FFFFFF;
+	background: -o-linear-gradient(top, #F8F8F8 30%, #dfdfdf 100%);
+	background: -ms-linear-gradient(top, #F8F8F8 30%, #dfdfdf 100%);
+	background: -moz-linear-gradient(top, #F8F8F8 30%, #dfdfdf 100%);
+	background: -webkit-linear-gradient(top, #F8F8F8 20%, #dfdfdf 100%);
+	background: linear-gradient(top, #F8F8F8 30%, #dfdfdf 100%);
+}
+
+.window{
+	min-height: 450px;
+	background: #FFF;
+}
+
+.search{
+	height: 25px;
+	margin: 0 70px 0 90px;
+	padding:0 20px;
+	border: 1px solid #d1d1d1;
+	border-radius: 4px;
+	background: #FFF;
+	-moz-box-shadow: 0 1px 1px #f2f2f2;
+	-webkit-box-shadow: 0 1px 1px #f2f2f2;
+	box-shadow: 0 1px 1px #f2f2f2;
+}
+
+.search input{
+	box-sizing: border-box;
+	width: 100%;
+	border: 0 none;
+	border-radius: 4px;
+	height: 25px;
+	padding:0 6px;
+	outline: none;
+}
+</style>
+</head>
+
+
+<body>
+
+<div id="demo-header">
+	<h1>css3模拟chrome浏览器 (Demo)</h1>
+	<p>&copy; <a href="http://www.markqin.com">Mark Qin</a></p>
+</div>
+
+
+<div id="demo-content">
+
+	<div class="demo-box">
+	
+		<div class="browser">
+			<ul class="tabs">
+				<li>新标签页</li>
+				<li class="selected">百度一下，你就知道</li>
+				<li>新标签页</li>
+			</ul>
+			<div class="tollbar">
+				<div class="search">
+					<input type="text">
+				</div>
+			</div>
+			<div class="window">
+				<iframe src="http://www.baidu.com" width="100%" height="450px" frameborder="0"></iframe>
+			</div>
+		</div>
+		
+	</div>
+	
+	<div class="demo-explain">
+		测试环境 ： Win XP <br>
+		测试浏览器 ： Chrome 16.0 , Firefox 10.0.2 , Opera 11.6.1 , Safari 5.1.2
+	</div>
+	
+</div>
+
+</body>
+</html>

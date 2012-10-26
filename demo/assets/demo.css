@@ -1,0 +1,44 @@
+
+/* Demo页面样式 */
+
+body { 
+	padding: 30px;
+	margin: 0;
+}
+
+#demo-header {
+	border-bottom: 1px solid #666;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	text-align:center;
+}
+#demo-header h1 {
+	padding: 0;
+	margin: 0;
+	line-height:36px;
+	font-size:30px;
+}
+#demo-header p {
+	padding: 15px 0 35px;
+	margin: 0;
+	font-size:14px;
+	color: #666;
+}
+#demo-header p a {
+	color: #666;
+	text-decoration: none;
+}
+#demo-header p a:hover {
+	color: #FF6600;
+	text-decoration: underline;
+}
+#demo-content {
+	padding:60px 30px 30px;
+}
+#demo-content .demo-box {
+	margin-bottom: 30px;
+}
+#demo-content .demo-explain {
+	margin-bottom: 30px;
+	font-size: 12px;
+	color: #666;
+}
