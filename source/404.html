@@ -1,0 +1,13 @@
+---
+layout: page
+title: 404，悲剧了...
+footer: false
+---
+<h3>不妨看看下面的文章：</h3>
+<div id="blog-archives" class="missing">
+{% for post in site.posts limit: 10 %}
+<article>
+  {% include archive_post.html %}
+</article>
+{% endfor %}
+</div>
