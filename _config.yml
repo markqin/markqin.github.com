@@ -3,11 +3,11 @@
 # ----------------------- #
 
 url: http://markqin.github.com
-title: My Octopress Blog
-subtitle: A blogging framework for hackers.
-author: Your Name
+title: Mark Qin
+subtitle: 像个沙漏，存着时间
+author: Mark Qin
 simple_search: http://google.com/search
-description:
+description: Mark秦，也叫方定之埃，本名秦春龙。前端工程师，业余文艺青年，各种爱好者。偶尔在此敲几段文字贴几张图，像个沙漏，存着时间。
 
 # Default date format is "ordinal" (resulting in "July 22nd 2007")
 # You can customize the format as defined in
