@@ -5,13 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>404，悲剧了... - Mark Qin</title>
+  <title>Mark Qin</title>
   <meta name="author" content="Mark Qin">
 
   
-  <meta name="description" content=" 404，悲剧了... 不妨看看下面的文章： CSS3模拟Chrome浏览器
-Feb 19 2012 通用选择符“ * ”与前端的“矫情”
-Feb 15 2012 Recent Posts CSS3模拟Chrome浏览器 通用选择符“ * ”与前端的“矫情” ">
+  <meta name="description" content="Page not found Sorry about that! Unfortunately the page you were looking for could not be found. It might have been removed, lost or never existed. &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -57,8 +55,8 @@ Feb 15 2012 Recent Posts CSS3模拟Chrome浏览器 通用选择符“ * ”与�
 </form>
   
 <ul class="main-navigation">
-  <li><a href="/">Blog</a></li>
-  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/">首页</a></li>
+  <li><a href="/blog/archives">文章存档</a></li>
 </ul>
 
 </nav>
@@ -68,30 +66,40 @@ Feb 15 2012 Recent Posts CSS3模拟Chrome浏览器 通用选择符“ * ”与�
 <article role="article">
   
   <header>
-    <h1 class="entry-title">404，悲剧了...</h1>
+  <h1 class="entry-title">Page not found</h1>
+  <p class="meta">Sorry about that!</p>
+</header>
+
+<p>
+  Unfortunately the page you were looking for could not be found. It might have
+  been removed, lost or never existed. You could try and find it using the
+  <script>
+    var arrURL = document.URL.split("/");
+    var arrParams = arrURL[3].split("?");
+    var searchParam = arrParams[0].substr(0, arrParams[0].lastIndexOf("."));
     
-  </header>
+    document.write('<a href="http://google.com/search?q=site:markqin.github.com ' + searchParam + '">search</a>')
+  </script>
+  <noscript><a href="http://google.com/search?q=site%3Amarkqin.github.com">search</a></noscript>
+  box (top right corner), browse the
+  <a href="/blog/archives">archives</a> or go to the
+  <a href="/">frontpage</a>.
+</p>
+
   
-  <h3>不妨看看下面的文章：</h3>
-<div id="blog-archives" class="missing">
-
-<article>
+    <footer>
+      
+      
+        <div class="sharing">
   
-<h1><a href="/blog/2012/02/19/mimic-the-chrome-browser-with-css3/">CSS3模拟Chrome浏览器</a></h1>
-<time datetime="2012-02-19T17:31:00+08:00" pubdate><span class='month'>Feb</span> <span class='day'>19</span> <span class='year'>2012</span></time>
-
-
-</article>
-
-<article>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://markqin.github.com/404.html" data-via="" data-counturl="http://markqin.github.com/404.html" >Tweet</a>
   
-<h1><a href="/blog/2012/02/15/universal-selector-and-front-end/">通用选择符“ * ”与前端的“矫情”</a></h1>
-<time datetime="2012-02-15T17:18:00+08:00" pubdate><span class='month'>Feb</span> <span class='day'>15</span> <span class='year'>2012</span></time>
-
-
-</article>
-
+  
+  
 </div>
+
+      
+    </footer>
   
 </article>
 
@@ -100,7 +108,7 @@ Feb 15 2012 Recent Posts CSS3模拟Chrome浏览器 通用选择符“ * ”与�
 <aside class="sidebar">
   
     <section>
-  <h1>Recent Posts</h1>
+  <h1>近期文章</h1>
   <ul id="recent_posts">
     
       <li class="post">
