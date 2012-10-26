@@ -1,6 +1,14 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
+        <loc>http://markqin.github.com/blog/2012/02/15/universal-selector-and-front-end/</loc>
+        <lastmod>2012-10-26T23:34:28+08:00</lastmod>
+    </url>
+    <url>
+        <loc>http://markqin.github.com/blog/2012/02/19/mimic-the-chrome-browser-with-css3/</loc>
+        <lastmod>2012-10-26T23:34:28+08:00</lastmod>
+    </url>
+    <url>
         <loc>http://markqin.github.com/blog/archives/</loc>
         <lastmod>2012-10-26T23:34:28+08:00</lastmod>
     </url>

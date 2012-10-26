@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>My Octopress Blog</title>
-  <meta name="author" content="Your Name">
+  <title>Mark Qin</title>
+  <meta name="author" content="Mark Qin">
 
   
-  <meta name="description" content=" Blog Archives Recent Posts ">
+  <meta name="description" content="最近做了一件看起来有点无聊的事情，就是用浏览器中运行的HTML与CSS生成一个浏览器。话不多说，先来欣赏下这个无聊的作品（因为一时找不到Chrome的原装图标，又懒得抠图，所以用到图标的地方我都空在那了，各位先将就着看吧）： 浏览器Demo >> 这个山寨Chrome在技术上没什么高深的东西， &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -24,7 +24,7 @@
   <script src="/javascripts/modernizr-2.0.js"></script>
   <script src="/javascripts/ender.js"></script>
   <script src="/javascripts/octopress.js" type="text/javascript"></script>
-  <link href="/atom.xml" rel="alternate" title="My Octopress Blog" type="application/atom+xml">
+  <link href="/atom.xml" rel="alternate" title="Mark Qin" type="application/atom+xml">
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
 <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
@@ -35,9 +35,9 @@
 
 <body   >
   <header role="banner"><hgroup>
-  <h1><a href="/">My Octopress Blog</a></h1>
+  <h1><a href="/">Mark Qin</a></h1>
   
-    <h2>A blogging framework for hackers.</h2>
+    <h2>像个沙漏，存着时间</h2>
   
 </hgroup>
 
@@ -65,6 +65,207 @@
       <div class="blog-index">
   
   
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/02/19/mimic-the-chrome-browser-with-css3/">CSS3模拟Chrome浏览器</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-02-19T17:31:00+08:00" pubdate data-updated="true">Feb 19<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>最近做了一件看起来有点无聊的事情，就是用浏览器中运行的HTML与CSS生成一个浏览器。话不多说，先来欣赏下这个无聊的作品（因为一时找不到Chrome的原装图标，又懒得抠图，所以用到图标的地方我都空在那了，各位先将就着看吧）：</p>
+
+<p><a href="/demo/css3-imitate-chrome/demo.html">浏览器Demo >></a></p>
+
+<p>这个山寨Chrome在技术上没什么高深的东西，都是一些基本的CSS3的使用，只有浏览器标签的实现方法值得一提。</p>
+
+<h3>一、梯形标签的实现方法</h3>
+
+<p>Chrome作为当代文艺青年的必备利器，犀利的标签是必不可少的：</p>
+
+<p><img src="http://www.markqin.com/wp-content/uploads/2012/02/chrome-tabs.jpg" alt="image" /></p>
+
+<p>可以看出，Chrome标签的基本特点是“梯形、有圆角、宽度自适应”。对于这样的标签，虽说用图片可以轻松搞定，但用CSS3实现的话无疑更具文艺范儿（不支持CSS3的前辈级浏览器暂时就不考虑了）。</p>
+
+<h4>1、 :before 与 :after</h4>
+
+<p>比起使用背景图片的常规方法，用CSS3实现梯形标签，最大的优点是HTML非常简洁：</p>
+
+<pre><code>&lt;ul class="tabs"&gt;
+    &lt;li&gt;新标签页&lt;/li&gt;
+    &lt;li class="selected"&gt;百度一下，你就知道&lt;/li&gt;
+    &lt;li&gt;新标签页&lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+
+<p>是不是太简单了点？不用怀疑，这些已经足够了。梯形的两端用伪元素 :before 与 :after 可以轻松搞定。说白了，就是用这两个伪元素代替常规方法中无意义的空容器（这里插一句伪元素的小问题，因为有不少人会认为 :before应该叫伪类，::before才叫伪元素，关于这个疑惑，<a href="http://www.w3.org/TR/2005/WD-css3-selectors-20051215/#pseudo-elements">W3C有详细解释</a>）：</p>
+
+<pre><code>.tabs li:before,
+.tabs li:after {
+     width: 16px;
+     height: 24px;
+     content: " ";
+     border: 1px solid #3b5c95;
+}
+</code></pre>
+
+<h4>2、定位</h4>
+
+<p>定位很简单，只需将这两个伪元素绝对定位到标签的两端即可，当然，要先声明 li 为相对定位，同时要注意各个元素之间的 z-index 关系。：</p>
+
+<pre><code>.tabs li {
+    display: inline-block;
+    position: relative;
+    z-index: 0;
+}
+.tabs li:before,
+.tabs li:after {
+    position: absolute;
+    z-index: 3;
+}
+.tabs li:before {
+    left: -12px;
+}
+.tabs li:after {
+    right: -12px;
+}
+</code></pre>
+
+<h4>3、变形</h4>
+
+<p>伪元素变形是整个浏览器标签实现过程中最重要的环节。方法是用CSS3中的<a href="http://www.w3.org/TR/css3-2d-transforms/">transform</a>，使前后两个伪元素分别呈不同的角度变形：</p>
+
+<pre><code>.tabs li:before {
+    -o-transform: skew(-22deg);
+    -ms-transform: skew(-22deg);
+    -moz-transform: skew(-22deg);
+    -webkit-transform: skew(-22deg);
+    transform: skew(-22deg);
+}
+.tabs li:after {
+    -o-transform: skew(22deg);
+    -ms-transform: skew(22deg);
+    -moz-transform: skew(22deg);
+    -webkit-transform: skew(22deg);
+    transform: skew(22deg);
+}
+</code></pre>
+
+<p>到这里，模拟Chrome标签的工作基本上算是完成了。剩下的无非是照着Chrome浏览器填充渐变色、微调一些宽高位移而已，就不再赘述了。请看单独的<a href="/demo/css3-imitate-chrome/tabs.html">Chrome浏览器标签Demo</a>。</p>
+
+<p>这个山寨浏览器标签有一个地方和原版有出入。在原版中，前面（左边）的标签总是盖着后面（右边）一个标签，但因为我是使用 inline-block 布局的，所以在文档结构中后面的元素总会覆盖前面的元素，我既不能一个一个地加 z-index，又不想使用 float:right 破坏结构，便随它去了（为了防止露馅，在demo中我只写3个标签）。如果哪位有好方法，一定得告诉我！</p>
+
+<h3>二、小结</h3>
+
+<p>最后，有两个地方需要略作说明。</p>
+
+<p>一个是变形角度问题。上面代码中看起来怪怪的22°，其实不是我的本意。我开始是写20°的（我一直是完美的整数控…），但当我将标签放到蓝色背景上时，发现在Chrome浏览器中有点小瑕疵，衔接的地方总有一个白点。但调整到22°时，白点就消失了。如下图：</p>
+
+<p><img src="http://www.markqin.com/wp-content/uploads/2012/02/chrome-transform-bug.jpg" alt="image" /></p>
+
+<p>除了同为Webkit内核的Safari中不出意外地存在这个问题外，Firefox 10与Opera 11.6在20°时都表现完美，大家稍微留意下。</p>
+
+<p>还有一个问题是关于CSS3中transition的。大家可以打开自己的Chrome浏览器看一下，当鼠标滑过Chrome浏览器标签时是有一个过渡动画效果的。我开始天真的认为用transition可以轻松搞定，但事实证明我错了。甚至一怒之下，我用了最霸道的方法写transition：</p>
+
+<pre><code>* {
+    -o-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    -webkit-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+}
+</code></pre>
+
+<p>分析后发现，问题出在背景上。我用了radial-gradient径像渐变作为:hover时的背景：</p>
+
+<pre><code>.tabs li:hover {
+    background-image: -o-radial-gradient(circle,#dbe9f9 0,#bcd7f6 60%);
+    background-image: -ms-radial-gradient(circle,#dbe9f9 0,#bcd7f6 60%);
+    background-image: -moz-radial-gradient(circle,#dbe9f9 0,#bcd7f6 60%);
+    background-image: -webkit-radial-gradient(circle,#dbe9f9 0,#bcd7f6 60%);
+    background-image: radial-gradient(circle,#dbe9f9 0,#bcd7f6 60%);
+}
+</code></pre>
+
+<p>radial-gradient属于background-image，而<a href="http://www.w3.org/TR/css3-transitions/#properties-from-css-">W3C关于transition的文档</a>中明确说明transition是支持background-image的，并且是“only gradients”。但经测试，不管是linear-gradient还是radial-gradient，只要是从一个gradient背景向另一个gradient背景进行transition，都不起效果。gradient背景向普通的background-color则可以顺利过渡，反之不行。不知是我写的不对还是我理解错误（测试浏览器：Chrome 16.0 /Firefox 10.0.2/Opera 11.6.1/Safari 5.1.2）。</p>
+
+<p>这件无聊的事情就先做到这了，有兴趣的朋友可以试着写一个，或者帮我继续完善它。</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/02/15/universal-selector-and-front-end/">通用选择符“ * ”与前端的“矫情”</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-02-15T17:18:00+08:00" pubdate data-updated="true">Feb 15<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>晚上看了Pual Irish的一篇名为<a href="http://paulirish.com/2012/box-sizing-border-box-ftw/">* { box-sizing: border-box } FTW</a>的文章。我不知道标题中的”FTW”是什么意思，遂搜索之，发现其释意为：“For The Win的英文缩写，网络用词，一般用来表达对某一事物喜欢到极致的心情。”于是大惊！惊的倒不是 border-box 的使用，而是最前面那个 * 选择符（当然，这种全面的使用border-box确实也够惊人的，但与本篇主旨无关，所以暂且先按下不表）。</p>
+
+<p>在众前端的眼中，通用选择符 * 一直以来都是个不祥之物，因为江湖盛传此君是个顶级的性能杀手。还记得<code>*{ padding:0; margin:0;}</code>么？当年讨论css reset的时候，有很多人反对这种写法的一个原因就是说 * 有严重的性能隐患。而如今，Pual Irish偏偏对它“FTW”。当然，这个“FTW”多半是送给border-box的，对于 * 的使用，Pual Irish是这样说的：</p>
+
+<blockquote><p>You might get up in arms about the universal * selector. Apparently you’ve heard its slow. Firstly, it’s not. It is as fast as h1 as a selector. It can be slow when you specifically use it like .foo > *, so don’t do that. Aside from that, you are not allowed to care about the performance of * unless you concatenate all your javascript, have it at the bottom, minify your css and js, gzip all your assets, and losslessly compress all your images. If aren’t getting 90+ Page Speed scores, its way too early to be thinking about selector optimization.</p></blockquote>
+
+<p>我简单地翻译了一下：</p>
+
+<blockquote><p>你可能对通用选择符 * 充满敌意。显然你早就听说过它的缓慢。首先，它并不缓慢。作为一个选择符，它的速度和h1标签一样迅速。除非当你像 .foo > * 这样具体使用时它才可能变慢，所以千万不要这样使用。除此之外，你根本不需要担心 * 的性能问题，除非你已经并置了所有的javascript文件，将它们放在文档底部，压缩了你的css与js文件，并将你所有的资源都gzip压缩，同时已经无损压缩你所有的图片。如果你的页面在Page Speed中的得分没有90分以上，那么此时考虑选择器的性能就显得为时过早了。</p></blockquote>
+
+<p>读完这段话后恍然大悟：原来是我们“矫情”了！竟然为了一个莫须有的原因就与 * 选择符老死不相往来，甚至有时本末倒置地将性能优化的重点放在选择器上，实在是不该。这不是个案，这样的“矫情”还有不少。最典型的要数对table的使用问题了。因为久闻table恶名或是曾被table搞地死去活来，所以不管什么情况都拒绝使用它，然后煞费苦心地用各种标签模拟table，并引以为荣，这不是“矫情”么？还有一个例子是关于CSS Sprites的，即刻意追求将整个站点所有的背景图片全部聚合在一张图上，不这么做还不行。诚然，出发点是好的，可是真的有必要这样做么？且不说这样做对性能的提升到底有多大，单单整那么一张庞然的聚合图您累不累啊，还有很多更重要的事情等着我们去做呐！这也可以说是一种“矫情”吧！</p>
+
+<p>这样例子应该还有很多，比如float的过度使用？比如对多层嵌套的坚决排斥？我一时也想不了那么多了，欢迎大家吐槽补充。</p>
+
+<p>上面所说的这些“矫情”，也许是由于对某些知识点理解还不够透彻，也许是完美主义在作祟，但不管怎么样，该补的要补，该抛的要抛，这种“矫情”要不得。诸君还是酌情放下这份“执着”吧！善哉。</p>
+</div>
+  
+  
+
+
+    </article>
+  
   <div class="pagination">
     
     <a href="/blog/archives">Blog Archives</a>
@@ -76,6 +277,14 @@
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/02/19/mimic-the-chrome-browser-with-css3/">CSS3模拟Chrome浏览器</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/02/15/universal-selector-and-front-end/">通用选择符“ * ”与前端的“矫情”</a>
+      </li>
     
   </ul>
 </section>
@@ -91,7 +300,7 @@
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2012 - Your Name -
+  Copyright &copy; 2012 - Mark Qin -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 
