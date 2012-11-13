@@ -15,15 +15,80 @@ img {
 	position: relative;
 	background: #000;
 }
-.pic-box-1 .drag-box {
+.drag-box {
 	position: absolute;
 	z-index: 200;
 	zoom: 1;
+	border: 1px dashed #fff;
+	cursor: move;
+}
+.drag-box i {
+	position: absolute;
+	background: white;
+	border: 1px solid #333;
+	width: 6px;
+	height: 6px;
+	z-index: 300;
+	font-size: 0;
+	opacity: 0.5;
+	filter: alpha(opacity=50);
+}
+.drag-box .tl {
+	left: -4px;
+	top: -4px;
+}
+.drag-box .tc {
+	top: -4px;
+	left: 50%;
+	margin-left: -4px;
+}
+.drag-box .tr {
+	right: -4px;
+	top: -4px;
+}
+.drag-box .cr {
+	right: -4px;
+	top: 50%;
+	margin-top: -4px;
+}
+.drag-box .br {
+	right: -4px;
+	bottom: -4px;
+}
+.drag-box .bc {
+	bottom: -4px;
+	left: 50%;
+	margin-left: -4px;
+}
+.drag-box .bl {
+	left: -4px;
+	bottom: -4px;
+}
+.drag-box .cl {
+	left: -4px;
+	top: 50%;
+	margin-top: -4px;
+}
+.drag-box .tl,
+.drag-box .br {
+	cursor: nw-resize;
+}
+.drag-box .tc,
+.drag-box .bc {
+	cursor: n-resize;
+}
+.drag-box .tr,
+.drag-box .bl {
+	cursor: ne-resize;
+}
+
+
+/* 1 */
+.pic-box-1 .drag-box {
 	left: 99px;
 	top: 99px;
 	width: 150px;
 	height: 150px;
-	border: 1px dashed #fff;
 }
 .pic-box-1 .img {
 	position: absolute;
@@ -45,14 +110,10 @@ img {
 
 }
 .pic-box-2 .drag-box {
-	position: absolute;
-	z-index: 200;
-	zoom: 1;
 	left: 100px;
 	top: 100px;
 	width: 98px;
 	height: 98px;
-	border: 1px dashed #fff;
 }
 .pic-box-2 .mask {
 	position: absolute;
@@ -92,14 +153,32 @@ img {
 	
 	<h2>一、clip方法</h2>
 	<div class="pic-box-1 pic-box">
-		<div class="drag-box"></div>
+		<div class="drag-box">
+			<i class="tl"></i>
+			<i class="tc"></i>
+			<i class="tr"></i>
+			<i class="cr"></i>
+			<i class="br"></i>
+			<i class="bc"></i>
+			<i class="bl"></i>
+			<i class="cl"></i>
+		</div>
 		<img class="img" src="http://farm9.staticflickr.com/8484/8181341771_93d9e1c3c8_b.jpg" alt="">
 		<img class="img-clip" src="http://farm9.staticflickr.com/8484/8181341771_93d9e1c3c8_b.jpg" alt="">
 	</div>
 
 	<h2>二、4个遮罩图层拼接方法</h2>
 	<div class="pic-box-2 pic-box">
-		<div class="drag-box"></div>
+		<div class="drag-box">
+			<i class="tl"></i>
+			<i class="tc"></i>
+			<i class="tr"></i>
+			<i class="cr"></i>
+			<i class="br"></i>
+			<i class="bc"></i>
+			<i class="bl"></i>
+			<i class="cl"></i>
+		</div>
 		<div class="mask">
 			<div class="mask-item top"></div>
 			<div class="mask-item right"></div>
