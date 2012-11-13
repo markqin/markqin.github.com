@@ -1,0 +1,114 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>图片剪切效果</title>
+<style type="text/css">
+img {
+	border: 0;
+}
+.pic-box {
+	width: 476px;
+	height: 700px;
+	overflow: hidden;
+	margin: 30px;
+	position: relative;
+	background: #000;
+}
+.pic-box-1 .drag-box {
+	position: absolute;
+	z-index: 200;
+	zoom: 1;
+	left: 99px;
+	top: 99px;
+	width: 150px;
+	height: 150px;
+	border: 1px dashed #fff;
+}
+.pic-box-1 .img {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	opacity: 0.5;
+}
+.pic-box-1 .img-clip {
+	z-index: 100;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	clip: rect(100px 250px 250px 100px);
+}
+
+
+/* 2 */
+.pic-box-2 {
+
+}
+.pic-box-2 .drag-box {
+	position: absolute;
+	z-index: 200;
+	zoom: 1;
+	left: 100px;
+	top: 100px;
+	width: 98px;
+	height: 98px;
+	border: 1px dashed #fff;
+}
+.pic-box-2 .mask {
+	position: absolute;
+}
+.pic-box-2 .mask-item {
+	position: absolute;
+	background: #000;
+	opacity: 0.5;
+}
+.pic-box-2 .top {
+	width: 100px;
+	height: 100px;
+	top: 0;
+	left: 100px;
+}
+.pic-box-2 .right {
+	width: 276px;
+	height: 700px;
+	top: 0;
+	left: 200px;
+}
+.pic-box-2 .bottom {
+	width: 100px;
+	height: 500px;
+	top: 200px;
+	left: 100px;
+}
+.pic-box-2 .left {
+	width: 100px;
+	height: 700px;
+	top: 0;
+	left: 0;
+}
+</style>
+</head>
+<body>
+	
+	<h2>一、clip方法</h2>
+	<div class="pic-box-1 pic-box">
+		<div class="drag-box"></div>
+		<img class="img" src="http://img3.douban.com/view/photo/raw/public/p925388992.jpg" alt="">
+		<img class="img-clip" src="http://img3.douban.com/view/photo/raw/public/p925388992.jpg" alt="">
+	</div>
+
+	<h2>二、4个遮罩图层拼接方法</h2>
+	<div class="pic-box-2 pic-box">
+		<div class="drag-box"></div>
+		<div class="mask">
+			<div class="mask-item top"></div>
+			<div class="mask-item right"></div>
+			<div class="mask-item bottom"></div>
+			<div class="mask-item left"></div>
+		</div>
+		<img class="img" src="http://img3.douban.com/view/photo/raw/public/p925388992.jpg" alt="">
+	</div>
+
+</body>
+</html>
+
