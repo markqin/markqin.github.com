@@ -74,6 +74,7 @@ Clicker.prototype = {
 
 	gameStop: function(){
 		clicker.scoresCurrObj.textContent = clicker.numb;
+		shareInfo.shareTitle = '我在<决战15秒>游戏中得了'+clicker.numb+'分，手指快如闪电，你能超越我么？'
 		clicker.maskObj.style.display = 'block';
 		clicker.menuObj.style.display = 'block';
 		clicker.scoresBoxObj.style.display = 'block';
