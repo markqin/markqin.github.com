@@ -112,9 +112,9 @@ restartBtn.addEventListener('click',function(ev){
 
 var shareInfo = {
 	appid: '',
-    imgUrl: '',
-    lineLink: '',
-	descContent: '',
+    imgUrl: 'http://qzonestyle.gtimg.cn/aoi/sola/20140526201837_Pii9bP6Ike.png',
+    lineLink: 'http://markqin.github.io/game/15s/',
+	descContent: '点击屏幕下方黑色区域，每点击一次得一分。在15秒内，看谁的分数高。',
 	shareTitle: '决战15秒，看谁的手指更快！'
 }
 
