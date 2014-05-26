@@ -16,11 +16,10 @@ var Clicker = function() {
 	this.menuObj = document.getElementById('menu');
 	this.scoresBoxObj = document.getElementById('scoresBox');
 	this.scoresCurrObj = document.getElementById('scoresCurrent');
+	this.scoresTitleObj = document.getElementById('scoresTitle');
 	this.readyTimerObj = document.getElementById('readyTimer');
 
 	this.numb = 0;
-	/*this.cWidth = this.clickArea.clientWidth;
-	this.cHeight = this.clickArea.clientHeight;*/
 
 }
 
@@ -69,12 +68,44 @@ Clicker.prototype = {
 	},
 
 	gameStop: function(){
-		clicker.scoresCurrObj.textContent = clicker.numb;
-		shareInfo.shareTitle = '我在<决战15秒>游戏中得了'+clicker.numb+'分，手指快如闪电，你能超越我么？'
+		var source = clicker.numb;
+		var title = clicker.getTitle(source);
+		var shareMsg = '我在<决战15秒>获得'+source+'分，获得“'+title+'”称号，求超越';
+		clicker.scoresCurrObj.textContent = source;
+		clicker.scoresTitleObj.textContent = title;
+		shareInfo.shareTitle = shareMsg;
 		clicker.maskObj.style.display = 'block';
 		clicker.menuObj.style.display = 'block';
 		clicker.scoresBoxObj.style.display = 'block';
 		clicker.numb = 0;
+	},
+
+	getTitle: function(numb) {
+		var msg = '';
+		if(numb <= 100) {
+			msg = '逗B';
+		} else if(numb <= 200) {
+			msg = '植物人';
+		} else if(numb <= 300) {
+			msg = '机器猫';
+		} else if(numb <= 400) {
+			msg = '独臂杨过';
+		} else if(numb <= 500) {
+			msg = '黑客';
+		} else if(numb <= 600) {
+			msg = '钢琴家';
+		} else if(numb <= 700) {
+			msg = '六指琴魔';
+		} else if(numb <= 800) {
+			msg = '八臂哪吒';
+		} else if(numb <= 900) {
+			msg = '闪电侠';
+		} else if(numb <= 999) {
+			msg = '光速侠';
+		} else {
+			msg = '真·撸神';
+		}
+		return msg;
 	},
 
 	timer: function(){
