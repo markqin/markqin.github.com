@@ -25,8 +25,7 @@ var Clicker = function() {
 Clicker.prototype = {
 	init: function() {
 		this.drawAll();
-		clicker.clickArea.addEventListener('touchstart',function(ev){
-		// clicker.clickArea.addEventListener('click',function(ev){
+		clicker.clickArea.addEventListener('click',function(ev){
 			clicker.animate();
 		},false);
 	},
