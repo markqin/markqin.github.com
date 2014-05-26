@@ -60,11 +60,18 @@ Clicker.prototype = {
 	animate: function(){
 		this.numb++;
 		this.nboxObj.textContent=this.numb;
+		// 过1000特殊显示
+		if(this.numb >= 1000) {
+			this.nboxObj.textContent='撸神';
+			clicker.clickArea.style.backgroundColor = '#ffd700';
+			clicker.nboxObj.style.color = '#FF0000';
+		}
 	},
 
 	gameReset: function(){
 		clicker.nboxObj.textContent = 0;
-		
+		clicker.clickArea.style.backgroundColor = '#000000';
+		clicker.nboxObj.style.color = '#000000';
 	},
 
 	gameStop: function(){
