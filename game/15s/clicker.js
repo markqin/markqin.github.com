@@ -1,16 +1,15 @@
-
+var shareInfo = {
+	appid: '',
+    imgUrl: 'http://qzonestyle.gtimg.cn/aoi/sola/20140526201837_Pii9bP6Ike.png',
+    lineLink: 'http://markqin.github.io/game/15s/',
+	descContent: '点击屏幕下方黑色区域，每点击一次得一分。在15秒内，看谁的分数高。',
+	shareTitle: '决战15秒，看谁的手指更快！'
+}
 
 
 var Clicker = function() {
 
 	this.clickArea = document.getElementById('clickArea');
-	this.cWidth = this.clickArea.clientWidth;
-	this.cHeight = this.clickArea.clientHeight;
-
-	this.numb = 0;
-	this.scores = 0;
-
-	this.nboxObj = document.getElementById('numberBox');
 	this.nboxObj = document.getElementById('numberBox');
 	this.maskObj = document.getElementById('mask');
 	this.clockObj = document.getElementById('clock');
@@ -19,12 +18,16 @@ var Clicker = function() {
 	this.scoresCurrObj = document.getElementById('scoresCurrent');
 	this.readyTimerObj = document.getElementById('readyTimer');
 
+	this.numb = 0;
+	/*this.cWidth = this.clickArea.clientWidth;
+	this.cHeight = this.clickArea.clientHeight;*/
+
 }
 
 
 Clicker.prototype = {
 	init: function() {
-		this.drawAll();
+		this.drawGame();
 		clicker.clickArea.addEventListener('touchend',function(ev){
 			clicker.animate();
 		},false);
@@ -50,16 +53,8 @@ Clicker.prototype = {
 			}
 		},1000);
 	},
-	drawAll: function(){
-		var roleWidth = this.cWidth;
-		var roleHeight = this.cHeight*0.618;
-		this.roleY = this.cHeight-roleHeight;
-		this.clickArea.style.height = roleHeight-10+'px';
-		this.clickArea.style.top = this.roleY+10+'px';
-		this.nboxObj.style.height = this.roleY+'px';
-		this.nboxObj.style.lineHeight = this.roleY+'px';
-		this.nboxObj.style.fontSize = this.roleY+'px';
-		this.clockObj.style.top = this.roleY+'px';
+	drawGame: function(){
+		clicker.nboxObj.style.fontSize = clicker.nboxObj.clientHeight+'px';
 	},
 
 	animate: function(){
@@ -85,7 +80,6 @@ Clicker.prototype = {
 		var time = 15000;
 		var s = time;
 		var speed = 1000;
-		// var w = this.cWidth;
 		var w = 100;
 		var nw = w;
 		var gameTime = setTimeout(clicker.gameStop,time);
@@ -110,14 +104,9 @@ restartBtn.addEventListener('click',function(ev){
 },false);
 
 
+window.onresize = clicker.drawGame;
 
-var shareInfo = {
-	appid: '',
-    imgUrl: 'http://qzonestyle.gtimg.cn/aoi/sola/20140526201837_Pii9bP6Ike.png',
-    lineLink: 'http://markqin.github.io/game/15s/',
-	descContent: '点击屏幕下方黑色区域，每点击一次得一分。在15秒内，看谁的分数高。',
-	shareTitle: '决战15秒，看谁的手指更快！'
-}
+
 
 
 
