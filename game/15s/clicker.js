@@ -54,7 +54,8 @@ Clicker.prototype = {
 		},1000);
 	},
 	drawGame: function(){
-		clicker.nboxObj.style.fontSize = clicker.nboxObj.clientHeight+'px';
+		clicker.nboxObj.style.lineHeight = Math.floor(clicker.nboxObj.clientHeight)+'px';
+		clicker.nboxObj.style.fontSize = Math.floor(clicker.nboxObj.clientHeight*0.9)+'px';
 	},
 
 	animate: function(){
