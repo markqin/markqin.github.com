@@ -91,6 +91,9 @@ body {
 	font-size: 22px;
 }
 
+.action-box {
+	margin-bottom: 10%;
+}
 
 .restart-btn {
 	display: inline-block;
