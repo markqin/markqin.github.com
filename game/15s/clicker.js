@@ -70,7 +70,7 @@ Clicker.prototype = {
 	gameStop: function(){
 		var source = clicker.numb;
 		var title = clicker.getTitle(source);
-		var shareMsg = '我在<决战15秒>获得'+source+'分，获得“'+title+'”称号，求超越';
+		var shareMsg = '我在游戏<决战15秒>得了'+source+'分，荣获“'+title+'”称号，来战吧骚年！';
 		clicker.scoresCurrObj.textContent = source;
 		clicker.scoresTitleObj.textContent = title;
 		shareInfo.shareTitle = shareMsg;
