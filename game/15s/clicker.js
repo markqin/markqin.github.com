@@ -25,7 +25,7 @@ var Clicker = function() {
 Clicker.prototype = {
 	init: function() {
 		this.drawAll();
-		clicker.clickArea.addEventListener('click',function(ev){
+		clicker.clickArea.addEventListener('touchend',function(ev){
 			clicker.animate();
 		},false);
 	},
@@ -68,7 +68,6 @@ Clicker.prototype = {
 	},
 
 	gameReset: function(){
-		// clicker.numb = 0;
 		clicker.nboxObj.textContent = 0;
 		
 	},
@@ -92,11 +91,9 @@ Clicker.prototype = {
 		var gameClock = setInterval(function(){
 			w=w-nw/(time/speed)
 			clicker.clockObj.childNodes[0].style.width = w + '%';
-			// clicker.clockObj.childNodes[0].style.width = w + 'px';
 			if(w<=0) {
 				clicker.clockObj.childNodes[0].style.width = 0 + '%';
 				clearInterval(gameClock);
-				// clicker.gameStop()
 			}
 		},speed)
 	}
