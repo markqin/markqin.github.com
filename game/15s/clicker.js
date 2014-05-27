@@ -94,26 +94,26 @@ Clicker.prototype = {
 
 	getTitle: function(numb) {
 		var msg = '';
-		if(numb <= 100) {
+		if(numb <= 99) {
 			msg = '逗B';
-		} else if(numb <= 200) {
+		} else if(numb <= 198) {
 			msg = '植物人';
-		} else if(numb <= 300) {
+		} else if(numb <= 288) {
 			msg = '机器猫';
-		} else if(numb <= 400) {
+		} else if(numb <= 378) {
 			msg = '独臂杨过';
-		} else if(numb <= 500) {
+		} else if(numb <= 468) {
 			msg = '黑客';
-		} else if(numb <= 600) {
+		} else if(numb <= 558) {
 			msg = '钢琴家';
-		} else if(numb <= 700) {
+		} else if(numb <= 648) {
 			msg = '六指琴魔';
-		} else if(numb <= 800) {
+		} else if(numb <= 738) {
 			msg = '八臂哪吒';
-		} else if(numb <= 900) {
+		} else if(numb <= 828) {
 			msg = '闪电侠';
 		} else if(numb <= 999) {
-			msg = '光速侠';
+			msg = '千手观音';
 		} else {
 			msg = '真·撸神';
 		}
