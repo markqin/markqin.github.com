@@ -30,6 +30,11 @@ Clicker.prototype = {
 		clicker.clickArea.addEventListener('touchend',function(ev){
 			clicker.animate();
 		},false);
+
+		// 阻止ios下浏览器的默认滚动
+		window.addEventListener('touchmove',function(ev){
+			ev.preventDefault();
+		});
 	},
 	start: function() {
 		clicker.gameReset();
